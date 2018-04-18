@@ -12,7 +12,13 @@ namespace BaseExsercises
                 sum += item;
             }
 
-            return ((A[A.Length - 1] + 1 * A[A.Length - 1] + 2) / 2) - sum;
+            var fullSum = 0;
+            for (int i = 0; i <= A.Length; i++)
+            {
+                fullSum += i + 1;
+            }
+
+            return fullSum - sum;
         }
 
         [Theory]
