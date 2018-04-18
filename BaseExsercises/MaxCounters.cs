@@ -16,20 +16,24 @@ namespace BaseExsercises
                 var current = A[i];
                 if (counters.Length < current)
                 {
-                    counters = new int[N];
                     sum += max;
                     max = 0;
                 }
                 else
                 {
-                    counters[current - 1]++;
-                    max = Math.Max(max, counters[current - 1]);
+                    var index = current - 1;
+                    if (counters[index] < sum)
+                        counters[index] = sum;
+
+                    counters[index]++;
+                    max = Math.Max(max, counters[index] - sum);
                 }
             }
 
             for (int i = 0; i < counters.Length; i++)
             {
-                counters[i] += sum;
+                if (counters[i] < sum)
+                    counters[i] = sum;
             }
 
             return counters;
